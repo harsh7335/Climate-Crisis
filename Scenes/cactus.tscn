@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://do6dretjnqfix"]
+
+[ext_resource type="Texture2D" uid="uid://cd2mrft6oagm6" path="res://Assets/Desert1.png" id="1_qspt3"]
+[ext_resource type="PackedScene" uid="uid://cbmffil31sycw" path="res://Scenes/killzone.tscn" id="2_ag2ql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkku2"]
+atlas = ExtResource("1_qspt3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7g35f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkku2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bb8dp"]
+size = Vector2(22, 27)
+
+[node name="cactus" type="Node2D"]
+z_index = -5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, 0)
+scale = Vector2(1.02381, 1)
+sprite_frames = SubResource("SpriteFrames_7g35f")
+
+[node name="Killzone" parent="." instance=ExtResource("2_ag2ql")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_bb8dp")

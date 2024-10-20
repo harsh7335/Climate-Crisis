@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://02gs22ye3oek"]
+
+[ext_resource type="PackedScene" uid="uid://cbmffil31sycw" path="res://Scenes/killzone.tscn" id="1_n6blo"]
+[ext_resource type="Texture2D" uid="uid://bfeh2s8n8ky47" path="res://Assets/4 Animated objects/Trap.png" id="1_vw7uw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beboq"]
+size = Vector2(21, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w75pb"]
+atlas = ExtResource("1_vw7uw")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8g4h"]
+atlas = ExtResource("1_vw7uw")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiuld"]
+atlas = ExtResource("1_vw7uw")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2hdq"]
+atlas = ExtResource("1_vw7uw")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sfpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w75pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8g4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiuld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2hdq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Electric_trap" type="Area2D"]
+collision_mask = 2
+
+[node name="Killzone" parent="." instance=ExtResource("1_n6blo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-0.5, 9)
+shape = SubResource("RectangleShape2D_beboq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 4.5)
+scale = Vector2(0.9375, 0.8125)
+sprite_frames = SubResource("SpriteFrames_8sfpn")
+autoplay = "default"
+frame_progress = 0.284333
